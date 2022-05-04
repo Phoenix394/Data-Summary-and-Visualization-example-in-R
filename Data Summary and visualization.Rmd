@@ -1,0 +1,98 @@
+---
+title: "Data Summary and Visualization example in R"
+Name: Rafiqua Ferdousi
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+require(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+
+# Clear environment
+rm(list = ls()) 
+
+# INSTALL AND LOAD PACKAGES ################################
+# Installs pacman ("package manager") if needed
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(pacman, dplyr, ggplot2, lubridate, plotly, 
+               rio, rmarkdown, stringr, tidyr) 
+
+library(datasets)  # Load/unload base packages manually
+```
+
+
+
+```{r}
+# LOAD DATA ################################################
+head(iris)
+#class(iris)
+#dim(iris)
+#glimpse(iris)
+
+# SUMMARY() ################################################
+summary(iris$Species)       # Categorical variable
+summary(iris$Sepal.Length)  # Quantitative variable
+summary(iris)               # Entire data frame
+
+#tapply
+tapply(iris$Sepal.Length,iris$Species,mean,na.rm=T)
+iris$longsepal <- ifelse(iris$Sepal.Length > 6, 1, 0) 
+table(iris$longsepal)
+```
+
+
+```{r setup}
+# PLOT DATA WITH PLOT() ####################################
+plot(iris$Petal.Length, iris$Petal.Width)  # Quant pair
+#plot(iris)  # Entire data frame
+
+# Plot with options
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = "red",
+     pch = 19,         # Use solid circles for points
+     main = "Iris: Petal Length vs. Petal Width",
+     xlab = "Petal Length",
+     ylab = "Petal Width")
+```
+
+
+```{r setup}
+# BASIC HISTOGRAMS #########################################
+hist(iris$Sepal.Length)
+hist(iris$Sepal.Width)
+hist(iris$Petal.Length)
+hist(iris$Petal.Width)
+
+# HISTOGRAM BY GROUP #######################################
+# Put graphs in 3 rows and 1 column
+par(mfrow = c(3, 1))
+
+# Histograms for each species using options
+hist(iris$Petal.Width [iris$Species == "setosa"],
+     xlim = c(0, 3),
+     breaks = 9,
+     main = "Petal Width for Setosa",
+     xlab = "",
+     col = "red")
+
+hist(iris$Petal.Width [iris$Species == "versicolor"],
+     xlim = c(0, 3),
+     breaks = 9,
+     main = "Petal Width for Versicolor",
+     xlab = "",
+     col = "purple")
+
+hist(iris$Petal.Width [iris$Species == "virginica"],
+     xlim = c(0, 3),
+     breaks = 9,
+     main = "Petal Width for Virginica",
+     xlab = "",
+     col = "blue")
+
+# Restore graphic parameter
+#par(mfrow=c(1, 1))
+```
+
+
