@@ -22,8 +22,6 @@ pacman::p_load(pacman, dplyr, ggplot2, lubridate, plotly,
 library(datasets)  # Load/unload base packages manually
 ```
 
-
-
 ```{r}
 # LOAD DATA ################################################
 head(iris)
@@ -42,7 +40,6 @@ iris$longsepal <- ifelse(iris$Sepal.Length > 6, 1, 0)
 table(iris$longsepal)
 ```
 
-
 ```{r setup}
 # PLOT DATA WITH PLOT() ####################################
 plot(iris$Petal.Length, iris$Petal.Width)  # Quant pair
@@ -56,7 +53,6 @@ plot(iris$Petal.Length, iris$Petal.Width,
      xlab = "Petal Length",
      ylab = "Petal Width")
 ```
-
 
 ```{r setup}
 # BASIC HISTOGRAMS #########################################
