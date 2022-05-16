@@ -1,4 +1,4 @@
-# Data-Summary-and-Visualization-example-in-R
+# Data-Summary-and-Visualization-in-R
 This is a brief introductory example of data analysis in R using one of the well-known built-in data sets. 
 
 #I would personally use data.table as it is more convenient. My example codes:
